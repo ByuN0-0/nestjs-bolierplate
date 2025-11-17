@@ -8,10 +8,25 @@ import { UserModule } from './modules/user/user.module';
 import configuration from './config/configuration';
 import { validateEnv } from './config/env.validation';
 
+function getEnvFilePath(): string {
+  const env = process.env.NODE_ENV;
+  switch (env) {
+    case 'local':
+      return '.env.local';
+    case 'development':
+      return '.env.dev';
+    case 'production':
+      return '.env.prod';
+    default:
+      return '.env';
+  }
+}
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: getEnvFilePath(),
       load: [configuration],
       validate: validateEnv,
       validationOptions: {
