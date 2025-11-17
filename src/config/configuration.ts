@@ -10,6 +10,10 @@ const configuration = () => ({
   cors: {
     origins: parseOrigins(process.env.CORS_ALLOWED_ORIGINS!),
   },
+  database: {
+    mongoUri: process.env.MONGODB_URI!,
+    dbName: process.env.MONGODB_DB_NAME!,
+  },
   jwt: {
     accessSecret: process.env.JWT_ACCESS_SECRET!,
     accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN!,

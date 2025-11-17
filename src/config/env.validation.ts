@@ -26,6 +26,8 @@ export const envValidationSchema = z.object({
   APPLE_CLIENT_ID: z.string().min(1, 'APPLE_CLIENT_ID is required'),
   APPLE_CLIENT_SECRET: z.string().min(1, 'APPLE_CLIENT_SECRET is required'),
   APPLE_CALLBACK_URL: z.url().min(1, 'APPLE_CALLBACK_URL is required'),
+  MONGODB_URI: z.string().min(1, 'MONGODB_URI is required'),
+  MONGODB_DB_NAME: z.string().min(1, 'MONGODB_DB_NAME is required'),
 });
 
 export type EnvConfig = z.infer<typeof envValidationSchema>;
